@@ -1,0 +1,13 @@
+diff --git a/poppler/GlobalParams.cc b/poppler/GlobalParams.cc
+index 60d3ca9..2879b0a 100644
+--- a/poppler/GlobalParams.cc
++++ b/poppler/GlobalParams.cc
+@@ -450,7 +450,7 @@ GlobalParams::GlobalParams(const char *customPopplerDataDir)
+ void GlobalParams::scanEncodingDirs() {
+   GDir *dir;
+   GDirEntry *entry;
+-  const char *dataRoot = popplerDataDir ? popplerDataDir : POPPLER_DATADIR;
++  const char *dataRoot = popplerDataDir ? popplerDataDir : ( getenv("POPPLER_DATADIR") ? getenv("POPPLER_DATADIR") : POPPLER_DATADIR );
+   
+   // allocate buffer large enough to append "/nameToUnicode"
+   size_t bufSize = strlen(dataRoot) + strlen("/nameToUnicode") + 1;
